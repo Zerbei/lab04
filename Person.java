@@ -1,11 +1,11 @@
 public class Person {
 private String name;
 private String surname;
-private int age;
+int age;
 private double salary;
-double creditRiskFee;
-private double interest;
-private double installment;
+double creditRiskFee = 0;
+double interest;
+double installment;
 Person(String name, String surname, int age, int salary)
 {
     this.name = name;
@@ -41,10 +41,11 @@ void applyForLoan(Person p, int capital, int month, String loanType){
     printCreditResult(b, capital, p, installment, month, loanType);
 }
 void printCreditResult(Boolean b, int capital, Person person, double installment, int month, String loanType){
+    double payment = month * installment;
 if (b) {
-    System.out.printf("Congratulations %s %s! \n Your %s credit application: %d has been accepted!\n Your monthly payment will be: %f x %d \n Repayment costs = %f\n",name,surname,loanType,capital,installment,month,(month*installment));
+    System.out.printf("Congratulations %s %s! \nYour %s credit application: %d has been accepted!\nYour monthly payment will be: %f x %d\nRepayment costs = %f\n",name,surname,loanType,capital,installment,month,payment);
 } else {
-    System.out.println("deneme");
+    System.out.printf("We are sorry %s %s!\nYour %s credit application: %d has been rejected because your salary is lower than the installments!\nYour salary: %.1f < %f\n",name, surname,loanType,capital,salary,installment);
 }
 }
 }
